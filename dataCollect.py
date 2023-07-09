@@ -4,8 +4,8 @@ import serial
 output = serial.Serial("COM3",9600)
 
 def decode(data) :
-	data_str = ''.join(map(str,data))
-#it reverses the string !!!
+	data_str_rev = ''.join(map(str,data))
+	data_str=data_str_rev[::-1]
 	return data_str.encode()
 
 def devide(inp):
@@ -61,7 +61,7 @@ while True:
 		input_value=values[0]
 
 
-		output_val=round(eval(input_value)) #do not accept strings
+		output_val=round(eval(input_value)) #do not accept strings , do not accept leading integers
 		window['-TEXT-'].update(decode(devide(output_val)))
 		output.write(decode(devide(output_val)))
 			
@@ -71,6 +71,8 @@ while True:
 
 	if event == 'Clear' :
 		window['-TEXT-'].update('')
+		output_val=0
+		output.write(decode(devide(output_val)))
 
 
 window.close()
