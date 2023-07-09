@@ -61,7 +61,7 @@ while True:
 		input_value=values[0]
 
 
-		output_val=round(eval(input_value)) #do not accept strings , do not accept leading integers
+		output_val=round(eval(input_value)) #do not accept strings , do not accept leading zeros in integers
 		window['-TEXT-'].update(decode(devide(output_val)))
 		output.write(decode(devide(output_val)))
 			
